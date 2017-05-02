@@ -111,10 +111,10 @@ namespace WinFormFTPFile_Compal
                                         break;//add by panhuaguo 20170118
                                     }
                                 }
-                                else
-                                {
-                                    break;//如果txt文件下载失败
-                                }
+                                //else
+                                //{
+                                //    break;//如果txt文件下载失败
+                                //}
                             }
                             else
                             {
@@ -124,15 +124,15 @@ namespace WinFormFTPFile_Compal
                             {
                                 ftp.MoveFile(@"\" + fs.Name, @"\backup\" + fs.Name);
                             }
-                            else
-                            {
-                                break;//如果f文件下载失败
-                            }
+                            //else
+                            //{
+                            //    break;//如果f文件下载失败
+                            //}
                         }
-                        else
-                        {
-                            break;//数据库写入失败
-                        }
+                        //else
+                        //{
+                        //    break;//数据库写入失败
+                        //}
                     }
                     #endregion
                 }
