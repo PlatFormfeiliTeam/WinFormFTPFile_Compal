@@ -153,7 +153,13 @@ namespace WinFormFTPFile_Compal
             {
                 string enterprisecode = string.Empty;
                 string enterprisename = string.Empty;
+
                 string prefix = fs.Name.Substring(0, 3);
+                if (fs.Name.IndexOf(".txt") > 0 || fs.Name.IndexOf(".TXT") > 0)
+                {
+                    prefix = fs.Name.Substring(4, 3);
+                }
+
                 string entid = string.Empty;
                 if (prefix == "E1P" || prefix == "E1B" || prefix == "IMP" || prefix == "IMB")
                 {
