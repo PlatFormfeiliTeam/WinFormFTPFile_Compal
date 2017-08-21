@@ -56,7 +56,7 @@ namespace WinFormFTPFile_Compal
                     if (!fs.IsDirectory && fs.Size > 0 && seconds > 10)//有时候文件还在生成中，故加上时间范围限制
                     {
                         //提取合同协议号 如果无_，则直接将文件主名称作为合同协议号,如果有,则截取
-                        int start = fs.Name.IndexOf("_");
+                        /*int start = fs.Name.IndexOf("_");
                         string contractno = string.Empty;
                         if (start >= 0)
                         {
@@ -74,7 +74,35 @@ namespace WinFormFTPFile_Compal
                                 start = fs.Name.IndexOf(".");
                                 contractno = fs.Name.Substring(0, start);
                             }
+                        }*/
+
+                        string file_original = fs.Name;
+                        if (fs.Name.IndexOf(".txt") > 0 || fs.Name.IndexOf(".TXT") > 0)
+                        {
+                            file_original = file_original.Substring(4);
                         }
+
+                        int start = file_original.IndexOf("_");
+                        string contractno = string.Empty;
+                        if (start >= 0)
+                        {
+                            contractno = file_original.Substring(0, start);
+                        }
+                        else
+                        {
+                            start = file_original.IndexOf("-");//有些文件比较特殊是中杠
+                            if (start >= 0)
+                            {
+                                contractno = file_original.Substring(0, start);
+                            }
+                            else
+                            {
+                                start = file_original.IndexOf(".");
+                                contractno = file_original.Substring(0, start);
+                            }
+                        }
+
+
                         bool content = update_entorder(fs, destination, contractno);
                         //如果数据库信息插入或者更新成功
                         if (content)
